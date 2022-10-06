@@ -2,20 +2,19 @@ import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { ReleaseStageBadge } from "components/ReleaseStageBadge";
-import { Button } from "components/ui/Button";
-import { DropDownOptionDataItem } from "components/ui/DropDown";
-import { Popout } from "components/ui/Popout";
+import { DropdownMenu } from "components/ui/DropdownMenu";
 import { Text } from "components/ui/Text";
 
 import { ReleaseStage } from "core/request/AirbyteClient";
 import { FeatureItem, useFeature } from "hooks/services/Feature";
 
+import { DropdownMenuItemType } from "../ui/DropdownMenu/DropdownMenu";
 import styles from "./TableItemTitle.module.scss";
 
 interface TableItemTitleProps {
   type: "source" | "destination";
-  dropDownData: DropDownOptionDataItem[];
-  onSelect: (item: DropDownOptionDataItem) => void;
+  dropDownData: DropdownMenuItemType[];
+  onSelect: (item: DropdownMenuItemType) => void;
   entity: string;
   entityName: string;
   entityIcon?: React.ReactNode;
@@ -62,24 +61,11 @@ const TableItemTitle: React.FC<TableItemTitleProps> = ({
         <Text as="h3" size="sm">
           <FormattedMessage id="tables.connections" />
         </Text>
-        <Popout
-          data-testid={`select-${type}`}
+        <DropdownMenu
+          label={<FormattedMessage id={`tables.${type}Add`} />}
           options={options}
-          isSearchable={false}
-          styles={{
-            // TODO: hack to position select. Should be refactored with Headless UI Menu
-            menuPortal: (base) => ({
-              ...base,
-              marginLeft: -130,
-            }),
-          }}
-          menuShouldBlockScroll={false}
           onChange={onSelect}
-          targetComponent={({ onOpen }) => (
-            <Button onClick={onOpen} disabled={!allowCreateConnection}>
-              <FormattedMessage id={`tables.${type}Add`} />
-            </Button>
-          )}
+          disabled={!allowCreateConnection}
         />
       </div>
     </>
