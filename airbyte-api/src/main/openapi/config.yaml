@@ -3393,6 +3393,7 @@ components:
         - destinationId
         - syncCatalog
         - status
+        - schemaChange
       properties:
         connectionId:
           $ref: "#/components/schemas/ConnectionId"
@@ -3433,6 +3434,14 @@ components:
           format: uuid
         geography:
           $ref: "#/components/schemas/Geography"
+        schemaChange:
+          $ref: "#/components/schemas/SchemaChange"
+    SchemaChange:
+      enum:
+        - no_change
+        - non_breaking
+        - breaking
+      type: string
     ConnectionSearch:
       type: object
       properties:
@@ -4656,6 +4665,7 @@ components:
         - source
         - destination
         - isSyncing
+        - schemaChange
       properties:
         connectionId:
           $ref: "#/components/schemas/ConnectionId"
@@ -4712,6 +4722,8 @@ components:
           $ref: "#/components/schemas/CatalogDiff"
         geography:
           $ref: "#/components/schemas/Geography"
+        schemaChange:
+          $ref: "#/components/schemas/SchemaChange"
     WebBackendConnectionReadList:
       type: object
       required:
