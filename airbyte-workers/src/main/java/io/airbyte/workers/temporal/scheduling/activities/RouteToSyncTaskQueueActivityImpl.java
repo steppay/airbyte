@@ -4,8 +4,10 @@
 
 package io.airbyte.workers.temporal.scheduling.activities;
 
-import io.airbyte.workers.temporal.sync.RouterService;
+import io.airbyte.workers.temporal.exception.RetryableException;
+import io.airbyte.workers.temporal.scheduling.RouterService;
 import jakarta.inject.Singleton;
+import java.io.IOException;
 
 @Singleton
 public class RouteToSyncTaskQueueActivityImpl implements RouteToSyncTaskQueueActivity {
@@ -18,9 +20,13 @@ public class RouteToSyncTaskQueueActivityImpl implements RouteToSyncTaskQueueAct
 
   @Override
   public RouteToSyncTaskQueueOutput route(final RouteToSyncTaskQueueInput input) {
-    final String taskQueueForConnectionId = routerService.getTaskQueue(input.getConnectionId());
+    try {
+      final String taskQueueForConnectionId = routerService.getTaskQueue(input.getConnectionId());
 
-    return new RouteToSyncTaskQueueOutput(taskQueueForConnectionId);
+      return new RouteToSyncTaskQueueOutput(taskQueueForConnectionId);
+    } catch (final IOException e) {
+      throw new RetryableException(e);
+    }
   }
 
 }
