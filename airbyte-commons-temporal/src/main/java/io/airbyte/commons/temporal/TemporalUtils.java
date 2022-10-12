@@ -101,10 +101,6 @@ public class TemporalUtils {
   }
 
   public WorkflowServiceStubs createTemporalService() {
-    final WorkflowServiceStubsOptions options =
-        temporalCloudEnabled ? getCloudTemporalOptions() : TemporalWorkflowUtils.getAirbyteTemporalOptions(temporalHost);
-    final String namespace = temporalCloudEnabled ? temporalCloudNamespace : DEFAULT_NAMESPACE;
-
     return createTemporalService(temporalCloudEnabled);
   }
 
