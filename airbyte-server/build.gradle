@@ -91,7 +91,7 @@ run {
     environment "TRACKING_STRATEGY", env.TRACKING_STRATEGY
     environment "AIRBYTE_VERSION", env.VERSION
     environment "AIRBYTE_ROLE", System.getenv('AIRBYTE_ROLE')
-    environment "TEMPORAL_HOST", "localhost:7233"
+    environment "TEMPORAL_HOST", env.TEMPORAL_HOST
 }
 
 // produce reproducible archives
