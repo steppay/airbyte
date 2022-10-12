@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
-public class DefaultGeographyMapperTest {
+class DefaultGeographyMapperTest {
 
   @Test
   void testGetTaskQueue() {
