@@ -315,7 +315,7 @@ public class AirbyteAcceptanceTestHarness {
 
   private WorkflowClient getWorkflowClient() {
     final TemporalUtils temporalUtils = new TemporalUtils(null, null, null, null, null, null, null);
-    final WorkflowServiceStubs temporalService = temporalUtils.createTemporalService();
+    final WorkflowServiceStubs temporalService = temporalUtils.createTemporalService(false);
     return WorkflowClient.newInstance(temporalService);
   }
 

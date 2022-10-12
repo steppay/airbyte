@@ -85,10 +85,12 @@ public class TemporalUtils {
     this.temporalRetentionInDays = temporalRetentionInDays;
   }
 
-  public WorkflowServiceStubs createTemporalService() {
-    final WorkflowServiceStubsOptions options =
-        temporalCloudEnabled ? getCloudTemporalOptions() : TemporalWorkflowUtils.getAirbyteTemporalOptions(temporalHost);
-    final String namespace = temporalCloudEnabled ? temporalCloudNamespace : DEFAULT_NAMESPACE;
+  // TODO consider consolidating this method's logic into createTemporalService() after the Temporal
+  // Cloud migration is complete.
+  // The Temporal Migration migrator is the only reason this public method exists.
+  public WorkflowServiceStubs createTemporalService(final boolean isCloud) {
+    final WorkflowServiceStubsOptions options = isCloud ? getCloudTemporalOptions() : TemporalWorkflowUtils.getAirbyteTemporalOptions(temporalHost);
+    final String namespace = isCloud ? temporalCloudNamespace : DEFAULT_NAMESPACE;
 
     return getTemporalClientWhenConnected(
         WAIT_INTERVAL,
@@ -96,6 +98,14 @@ public class TemporalUtils {
         WAIT_TIME_AFTER_CONNECT,
         () -> WorkflowServiceStubs.newInstance(options),
         namespace);
+  }
+
+  public WorkflowServiceStubs createTemporalService() {
+    final WorkflowServiceStubsOptions options =
+        temporalCloudEnabled ? getCloudTemporalOptions() : TemporalWorkflowUtils.getAirbyteTemporalOptions(temporalHost);
+    final String namespace = temporalCloudEnabled ? temporalCloudNamespace : DEFAULT_NAMESPACE;
+
+    return createTemporalService(temporalCloudEnabled);
   }
 
   private WorkflowServiceStubsOptions getCloudTemporalOptions() {
