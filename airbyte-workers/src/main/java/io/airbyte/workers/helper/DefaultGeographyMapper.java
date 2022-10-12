@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Airbyte, Inc., all rights reserved.
+ */
+
 package io.airbyte.workers.helper;
 
 import com.google.common.annotations.VisibleForTesting;
@@ -18,8 +22,7 @@ public class DefaultGeographyMapper implements GeographyMapper {
   static final Map<Geography, String> GEOGRAPHY_TASK_QUEUE_MAP = Map.of(
       Geography.AUTO, DEFAULT_SYNC_TASK_QUEUE,
       Geography.US, DEFAULT_SYNC_TASK_QUEUE,
-      Geography.EU, DEFAULT_SYNC_TASK_QUEUE
-  );
+      Geography.EU, DEFAULT_SYNC_TASK_QUEUE);
 
   @Override
   public String getTaskQueue(final Geography geography) {

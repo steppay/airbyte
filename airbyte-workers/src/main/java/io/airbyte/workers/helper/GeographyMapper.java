@@ -1,9 +1,14 @@
+/*
+ * Copyright (c) 2022 Airbyte, Inc., all rights reserved.
+ */
+
 package io.airbyte.workers.helper;
 
 import io.airbyte.config.Geography;
 
 /**
- * Maps a {@link Geography} to a Temporal Task Queue that should be used to run syncs for the given Geography.
+ * Maps a {@link Geography} to a Temporal Task Queue that should be used to run syncs for the given
+ * Geography.
  */
 public interface GeographyMapper {
 

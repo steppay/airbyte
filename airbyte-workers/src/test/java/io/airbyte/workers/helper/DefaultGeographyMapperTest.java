@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Airbyte, Inc., all rights reserved.
+ */
+
 package io.airbyte.workers.helper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,4 +36,5 @@ public class DefaultGeographyMapperTest {
 
     assertEquals(allGeographies, mappedGeographies);
   }
+
 }
