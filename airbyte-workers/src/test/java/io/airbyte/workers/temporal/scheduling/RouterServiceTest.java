@@ -8,12 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import io.airbyte.config.Geography;
 import io.airbyte.config.persistence.ConfigRepository;
+import io.airbyte.workers.helper.GeographyMapper;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,19 +28,21 @@ class RouterServiceTest {
   private static final String US_TASK_QUEUE = "US_TASK_QUEUE";
   private static final String EU_TASK_QUEUE = "EU_TASK_QUEUE";
 
-  private static final Map<Geography, String> GEOGRAPHY_MAP = Map.of(
-      Geography.AUTO, US_TASK_QUEUE,
-      Geography.US, US_TASK_QUEUE,
-      Geography.EU, EU_TASK_QUEUE);
-
   @Mock
   private ConfigRepository mConfigRepository;
+
+  @Mock
+  private GeographyMapper mGeographyMapper;
 
   private RouterService routerService;
 
   @BeforeEach
   void init() {
-    routerService = new RouterService(mConfigRepository, GEOGRAPHY_MAP);
+    routerService = new RouterService(mConfigRepository, mGeographyMapper);
+
+    Mockito.when(mGeographyMapper.getTaskQueue(Geography.AUTO)).thenReturn(US_TASK_QUEUE);
+    Mockito.when(mGeographyMapper.getTaskQueue(Geography.US)).thenReturn(US_TASK_QUEUE);
+    Mockito.when(mGeographyMapper.getTaskQueue(Geography.EU)).thenReturn(EU_TASK_QUEUE);
   }
 
   @Test
@@ -56,19 +55,6 @@ class RouterServiceTest {
 
     Mockito.when(mConfigRepository.getGeographyForConnection(CONNECTION_ID)).thenReturn(Geography.EU);
     assertEquals(EU_TASK_QUEUE, routerService.getTaskQueue(CONNECTION_ID));
-  }
-
-  /**
-   * If this test fails, it likely means that a new value was added to the {@link Geography} enum. A
-   * new entry must be added to {@link RouterService#initializeGeographyTaskQueueMap()} to get this
-   * test to pass.
-   */
-  @Test
-  void testAllGeographiesHaveAMapping() {
-    final Set<Geography> allGeographies = Arrays.stream(Geography.values()).collect(Collectors.toSet());
-    final Set<Geography> mappedGeographies = RouterService.initializeGeographyTaskQueueMap().keySet();
-
-    assertEquals(allGeographies, mappedGeographies);
   }
 
 }
