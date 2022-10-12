@@ -1,13 +1,9 @@
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classNames from "classnames";
 import { Field, FieldArray } from "formik";
 import React, { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useToggle } from "react-use";
 import styled from "styled-components";
 
-import { Button } from "components/ui/Button";
 import { Card } from "components/ui/Card";
 import { Text } from "components/ui/Text";
 
@@ -35,7 +31,7 @@ import {
 } from "views/Connection/ConnectionForm/formConfig";
 import { FormCard } from "views/Connection/FormCard";
 
-import styles from "./ConnectionTransformationTab.module.scss";
+import { DbtCloudTransformationsCard } from "./ConnectionTransformationTab/DbtCloudTransformationsCard";
 
 interface ConnectionTransformationTabProps {
   connection: WebBackendConnectionRead;
@@ -94,40 +90,6 @@ const CustomTransformationsCard: React.FC<{
         )}
       </FieldArray>
     </FormCard>
-  );
-};
-
-const CloudTransformationsCard = () => {
-  // TODO fetch list of transformations for real
-  const transformations = [];
-  /* const transformations = [1, 2, 3]; */
-
-  const TransformationList = ({ className }: { className: string }) =>
-    transformations.length ? (
-      <div className={className}>this is a list</div>
-    ) : (
-      <div className={classNames(className, styles.emptyListContent)}>
-        <div className={styles.contextExplanation}>
-          After an Airbyte sync job has completed, the following jobs will run.
-        </div>
-        <img src="/images/octavia/worker.png" alt="An octopus wearing a hard hat, tools at the ready" />
-        No transformations
-      </div>
-    );
-
-  return (
-    <Card
-      title={
-        <span className={styles.cloudTransformationsListTitle}>
-          Transformations
-          <Button variant="secondary" icon={<FontAwesomeIcon icon={faPlus} />}>
-            Add transformation
-          </Button>
-        </span>
-      }
-    >
-      <TransformationList className={styles.cloudTransformationsListContainer} />
-    </Card>
   );
 };
 
@@ -212,7 +174,7 @@ export const ConnectionTransformationTab: React.FC<ConnectionTransformationTabPr
         {supportsDbt && (
           <CustomTransformationsCard operations={connection.operations} onSubmit={onSubmit} mode={mode} />
         )}
-        {supportsCloudDbtIntegration && <CloudTransformationsCard />}
+        {supportsCloudDbtIntegration && <DbtCloudTransformationsCard />}
         {noSupportedTransformations && (
           <NoSupportedTransformationCard>
             <Text as="p" size="lg" centered>
