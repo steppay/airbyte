@@ -132,4 +132,8 @@ tasks.named("buildDockerImage") {
     dependsOn copyGeneratedTar
 }
 
+tasks.named("startScripts") {
+    classpath = files('$APP_HOME/lib/*')
+}
+
 Task publishArtifactsTask = getPublishArtifactsTask("$rootProject.ext.version", project)
