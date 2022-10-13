@@ -9,7 +9,9 @@ import io.airbyte.commons.temporal.TemporalJobType;
 import io.airbyte.config.Geography;
 import jakarta.inject.Singleton;
 import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Singleton
 public class DefaultGeographyMapper implements GeographyMapper {
 
@@ -26,6 +28,7 @@ public class DefaultGeographyMapper implements GeographyMapper {
 
   @Override
   public String getTaskQueue(final Geography geography) {
+    log.warn("Called DefaultGeographyMapper getTaskQueue for geography {}", geography);
     if (GEOGRAPHY_TASK_QUEUE_MAP.containsKey(geography)) {
       return GEOGRAPHY_TASK_QUEUE_MAP.get(geography);
     }
