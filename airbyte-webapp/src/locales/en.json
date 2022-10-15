@@ -535,7 +535,6 @@
   "errorView.retry":  "다시 해보기",
   "errorView.unknown":  "알 수 없음",
   "errorView.unknownError":  "알 수 없는 오류가 발생했습니다",
-: 
   "frequency.manual":  "수동",
   "frequency.cron":  "크론",
   "frequency.minutes":  "{값}분",
