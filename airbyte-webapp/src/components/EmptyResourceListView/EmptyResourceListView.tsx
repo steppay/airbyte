@@ -30,20 +30,22 @@ export const EmptyResourceListView: React.FC<EmptyResourceListViewProps> = ({ re
       <Text as="h2" size="lg" centered className={styles.heading}>
         <FormattedMessage id={headingMessageId} />
       </Text>
-      <div className={classNames(styles.container, styles.illustration)}>
-        {resourceType !== "destinations" && (
-          <img src="/images/bowtie-half.svg" alt="Left Bowtie" className={classNames(styles.bowtie, styles.left)} />
-        )}
-        {resourceType !== "sources" && (
-          <img src="/images/bowtie-half.svg" alt="Right Bowtie" className={classNames(styles.bowtie, styles.right)} />
-        )}
-        <img
-          className={styles.octavia}
-          src={`/images/octavia/empty-${resourceType}.png`}
-          alt="Octavia"
-          resource={resourceType}
-        />
-      </div>
+      {/*<div className={classNames(styles.container, styles.illustration)}>*/}
+      {/*  {resourceType !== "destinations" && (*/}
+      {/*    <img src="/images/bowtie-half.svg" alt="Left Bowtie" className={classNames(styles.bowtie, styles.left)} />*/}
+      {/*  )}*/}
+      {/*  {resourceType !== "sources" && (*/}
+      {/*    <img src="/images/bowtie-half.svg" alt="Right Bowtie" className={classNames(styles.bowtie, styles.right)} />*/}
+      {/*  )}*/}
+      {/*  <img*/}
+      {/*    className={styles.octavia}*/}
+      {/*    src={`/images/octavia/empty-${resourceType}.png`}*/}
+      {/*    alt="Octavia"*/}
+      {/*    resource={resourceType}*/}
+      {/*  />*/}
+      {/*</div>*/}
+        <br />
+        <br />
       <Button onClick={onCreateClick} size="lg" data-id={`new-${singularResourceType}`}>
         <FormattedMessage id={buttonMessageId} />
       </Button>

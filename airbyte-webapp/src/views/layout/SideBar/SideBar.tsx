@@ -38,7 +38,7 @@ export const useCalculateSidebarStyles = () => {
 };
 
 const SideBar: React.FC = () => {
-  const config = useConfig();
+  // const config = useConfig();
   const workspace = useCurrentWorkspace();
   const navLinkClassName = useCalculateSidebarStyles();
 
@@ -86,58 +86,58 @@ const SideBar: React.FC = () => {
         </ul>
       </div>
       <ul className={styles.menu}>
-        <li>
-          <a href={links.updateLink} target="_blank" rel="noreferrer" className={styles.menuItem}>
-            <FontAwesomeIcon className={styles.helpIcon} icon={faRocket} />
-            <Text className={styles.text} size="sm">
-              <FormattedMessage id="sidebar.update" />
-            </Text>
-          </a>
-        </li>
-        <li>
-          <SidebarDropdownMenu
-            label={{
-              icon: <DocsIcon />,
-              displayName: <FormattedMessage id="sidebar.resources" />,
-            }}
-            options={[
-              {
-                type: SidebarDropdownMenuItemType.LINK,
-                href: links.docsLink,
-                icon: <DocsIcon />,
-                displayName: <FormattedMessage id="sidebar.documentation" />,
-              },
-              {
-                type: SidebarDropdownMenuItemType.LINK,
-                href: links.slackLink,
-                icon: <FontAwesomeIcon icon={faSlack} />,
-                displayName: <FormattedMessage id="sidebar.joinSlack" />,
-              },
-              {
-                type: SidebarDropdownMenuItemType.LINK,
-                href: links.recipesLink,
-                icon: <RecipesIcon />,
-                displayName: <FormattedMessage id="sidebar.recipes" />,
-              },
-            ]}
-          />
-        </li>
-        <li>
-          <NavLink className={navLinkClassName} to={RoutePaths.Settings}>
-            <React.Suspense fallback={null}>
-              <NotificationIndicator />
-            </React.Suspense>
-            <SettingsIcon />
-            <Text className={styles.text} size="sm">
-              <FormattedMessage id="sidebar.settings" />
-            </Text>
-          </NavLink>
-        </li>
-        {config.version ? (
-          <li>
-            <Version primary />
-          </li>
-        ) : null}
+        {/*<li>*/}
+        {/*  <a href={links.updateLink} target="_blank" rel="noreferrer" className={styles.menuItem}>*/}
+        {/*    <FontAwesomeIcon className={styles.helpIcon} icon={faRocket} />*/}
+        {/*    <Text className={styles.text} size="sm">*/}
+        {/*      <FormattedMessage id="sidebar.update" />*/}
+        {/*    </Text>*/}
+        {/*  </a>*/}
+        {/*</li>*/}
+        {/*<li>*/}
+        {/*  <SidebarDropdownMenu*/}
+        {/*    label={{*/}
+        {/*      icon: <DocsIcon />,*/}
+        {/*      displayName: <FormattedMessage id="sidebar.resources" />,*/}
+        {/*    }}*/}
+        {/*    options={[*/}
+        {/*      {*/}
+        {/*        type: SidebarDropdownMenuItemType.LINK,*/}
+        {/*        href: links.docsLink,*/}
+        {/*        icon: <DocsIcon />,*/}
+        {/*        displayName: <FormattedMessage id="sidebar.documentation" />,*/}
+        {/*      },*/}
+        {/*      {*/}
+        {/*        type: SidebarDropdownMenuItemType.LINK,*/}
+        {/*        href: links.slackLink,*/}
+        {/*        icon: <FontAwesomeIcon icon={faSlack} />,*/}
+        {/*        displayName: <FormattedMessage id="sidebar.joinSlack" />,*/}
+        {/*      },*/}
+        {/*      {*/}
+        {/*        type: SidebarDropdownMenuItemType.LINK,*/}
+        {/*        href: links.recipesLink,*/}
+        {/*        icon: <RecipesIcon />,*/}
+        {/*        displayName: <FormattedMessage id="sidebar.recipes" />,*/}
+        {/*      },*/}
+        {/*    ]}*/}
+        {/*  />*/}
+        {/*</li>*/}
+        {/*<li>*/}
+        {/*  <NavLink className={navLinkClassName} to={RoutePaths.Settings}>*/}
+        {/*    <React.Suspense fallback={null}>*/}
+        {/*      <NotificationIndicator />*/}
+        {/*    </React.Suspense>*/}
+        {/*    <SettingsIcon />*/}
+        {/*    <Text className={styles.text} size="sm">*/}
+        {/*      <FormattedMessage id="sidebar.settings" />*/}
+        {/*    </Text>*/}
+        {/*  </NavLink>*/}
+        {/*</li>*/}
+        {/*{config.version ? (*/}
+        {/*  <li>*/}
+        {/*    <Version primary />*/}
+        {/*  </li>*/}
+        {/*) : null}*/}
       </ul>
     </nav>
   );

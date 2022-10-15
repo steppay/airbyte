@@ -96,7 +96,7 @@ export const theme = {
   yellow: scss.yellow,
 
   // Legacy colors - Do not use for new components
-  primaryColor: scss.blue,
+  primaryColor: scss.steppayPrimary,
   primaryColor25: scss.blue100,
   primaryColor12: scss.primaryColor12,
   mediumPrimaryColor: scss.darkBlue700,
@@ -116,7 +116,7 @@ export const theme = {
   dangerTransparentColor: scss.red50,
   successColor: scss.green,
   successColor20: scss.green50,
-  backgroundColor: scss.beige,
+  backgroundColor: scss.white,
   shadowColor: scss.shadowColor,
   cardShadowColor: scss.cardShadowColor,
 
@@ -140,7 +140,7 @@ export const theme = {
   borderTableColor: scss.grey100,
   lightTableColor: scss.grey50,
   darkGreyColor: scss.grey400,
-  redColor: scss.orange,
+  redColor: scss.steppayPrimary,
   lightRedColor: scss.lightRedColor,
   redTransparentColor: scss.orange50,
   transparentColor: scss.transparentColor,

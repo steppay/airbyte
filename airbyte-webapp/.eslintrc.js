@@ -20,7 +20,7 @@ module.exports = {
     "jsx-a11y/label-has-associated-control": "error",
     curly: "warn",
     "css-modules/no-undef-class": "off",
-    "css-modules/no-unused-class": ["error", { camelCase: true }],
+    "css-modules/no-unused-class": ["warn", { camelCase: true }],
     "dot-location": "warn",
     "dot-notation": "warn",
     eqeqeq: "error",
