@@ -127,13 +127,13 @@ const ConnectionTable: React.FC<IProps> = ({ data, entity, onClickRow, onSync })
         ),
       },
 
-      {
-        Header: <FormattedMessage id="tables.frequency" />,
-        accessor: "scheduleData",
-        Cell: ({ cell, row }: CellProps<ITableDataItem>) => (
-          <FrequencyCell value={cell.value} enabled={row.original.enabled} scheduleType={row.original.scheduleType} />
-        ),
-      },
+      // {
+      //   Header: <FormattedMessage id="tables.frequency" />,
+      //   accessor: "scheduleData",
+      //   Cell: ({ cell, row }: CellProps<ITableDataItem>) => (
+      //     <FrequencyCell value={cell.value} enabled={row.original.enabled} scheduleType={row.original.scheduleType} />
+      //   ),
+      // },
       {
         Header: (
           <button className={styles.tableHeaderButton} onClick={() => onSortClick("lastSync")}>

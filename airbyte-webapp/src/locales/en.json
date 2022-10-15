@@ -155,7 +155,7 @@
 
   "form.rawData":  "Raw 데이터(JSON)",
   "form.basicNormalization":  "표준화된 타뷸라 데이터",
-  "form.basicNormalization.message":  "JSON 개체를 목표 경로에 고유한 형식 및 형식에 매핑합니다. <lnk>자세히 알아보기</lnk>",
+  "form.basicNormalization.message":  "JSON 개체를 목표 경로에 고유한 형식 및 형식에 매핑합니다.",
   "form.customTransformation": "변환 사용자 정의",
   "form.transformationCount":  "{count, plural, =0 {사용자 지정 변환 없음} 1개 {{count} 변환} 다른 {{count} 변환}}",
   "form.addTransformation":  "+ 변환 추가",

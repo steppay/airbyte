@@ -46,7 +46,7 @@ const SideBar: React.FC = () => {
     <nav className={styles.nav}>
       <div>
         <Link to={workspace.displaySetupWizard ? RoutePaths.Onboarding : RoutePaths.Connections}>
-          <img src="/simpleLogo.svg" alt="logo" height={33} width={33} />
+          <img src="/simpleLogo.svg?v=2" alt="logo" height={33} width={33} />
         </Link>
         <ul className={styles.menu}>
           {workspace.displaySetupWizard ? (
